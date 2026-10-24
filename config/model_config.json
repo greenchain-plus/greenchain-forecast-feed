@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "model_id": "greenchain-da-weekly-damped-trend-v1",
+  "algorithm": "damped_last_week_trend",
+  "formula": "max(0, latest + alpha * (latest - previous))",
+  "alpha": 0.75,
+  "release_status": "APPROVED",
+  "release_data_sha256": "03a5622a54f85c120033d3bf0d8848de93cd9a17fc2e74a7c7fa67eceaab310e",
+  "release_validation": {
+    "verified_weeks": 42,
+    "locked_holdout_weeks_per_variety": 8,
+    "aggregate_mae_php_per_kg": 41.8517,
+    "aggregate_wape_percent": 9.1608,
+    "aggregate_rmse_php_per_kg": 58.4952,
+    "aggregate_smape_percent": 10.0367,
+    "aggregate_mase": 0.8725,
+    "previous_week_baseline_wape_percent": 16.5822
+  },
+  "error_band_php_per_kg": {
+    "green_leaf": 75.79,
+    "iceberg": 17.92,
+    "romaine": 71.19
+  },
+  "production_gates": {
+    "rolling_weeks": 8,
+    "maximum_aggregate_wape_percent": 15.0,
+    "maximum_aggregate_mase": 1.0,
+    "maximum_variety_wape_percent": 15.0,
+    "must_beat_previous_week_baseline": true
+  },
+  "input_validation": {
+    "minimum_php_per_kg": 20.0,
+    "maximum_php_per_kg": 1500.0,
+    "maximum_weekly_ratio": 4.0
+  },
+  "market_scope": "DA weekly average retail prices in NCR markets",
+  "currency": "PHP",
+  "unit": "PHP_PER_KG",
+  "source_listing": "https://www.da.gov.ph/price-monitoring/",
+  "signing": {
+    "algorithm": "SHA256withRSA",
+    "public_key_sha256": "6b32c6b62e4c687dbbfd93b0aec7e9167289a2bacbb60e74eeefb44d8b5b76b1"
+  }
+}

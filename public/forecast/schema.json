@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenchain-plus.github.io/greenchain-forecast-feed/forecast/schema.json",
+  "title": "Green CHAIN Weekly Forecast Feed",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "feed_id",
+    "sequence",
+    "generated_at",
+    "model",
+    "scope",
+    "data",
+    "forecast_period",
+    "predictions",
+    "production_health",
+    "signature"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "feed_id": {
+      "const": "greenchain-weekly-lettuce-price-forecast"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 40
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "model": {
+      "type": "object",
+      "required": ["id", "release_status", "algorithm", "alpha"],
+      "properties": {
+        "release_status": {
+          "const": "APPROVED"
+        },
+        "alpha": {
+          "type": "number"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "required": ["region", "price_level", "currency", "unit"],
+      "properties": {
+        "region": {
+          "const": "NCR"
+        },
+        "price_level": {
+          "const": "RETAIL_REFERENCE"
+        },
+        "currency": {
+          "const": "PHP"
+        },
+        "unit": {
+          "const": "PHP_PER_KG"
+        }
+      }
+    },
+    "forecast_period": {
+      "type": "object",
+      "required": ["start", "end", "stale_after"]
+    },
+    "predictions": {
+      "type": "object",
+      "required": ["green_leaf", "iceberg", "romaine"],
+      "properties": {
+        "green_leaf": {
+          "$ref": "#/$defs/prediction"
+        },
+        "iceberg": {
+          "$ref": "#/$defs/prediction"
+        },
+        "romaine": {
+          "$ref": "#/$defs/prediction"
+        }
+      },
+      "additionalProperties": false
+    },
+    "production_health": {
+      "type": "object",
+      "required": ["status", "aggregate", "by_variety", "gates"],
+      "properties": {
+        "status": {
+          "const": "HEALTHY"
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "required": ["algorithm", "public_key_sha256", "detached_file"],
+      "properties": {
+        "algorithm": {
+          "const": "SHA256withRSA"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "prediction": {
+      "type": "object",
+      "required": [
+        "label",
+        "point_php_per_kg",
+        "lower_php_per_kg",
+        "upper_php_per_kg",
+        "latest_observed_php_per_kg",
+        "previous_observed_php_per_kg"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "point_php_per_kg": {
+          "type": "number",
+          "minimum": 0
+        },
+        "lower_php_per_kg": {
+          "type": "number",
+          "minimum": 0
+        },
+        "upper_php_per_kg": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

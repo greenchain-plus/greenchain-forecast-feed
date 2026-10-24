@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Green CHAIN+ Forecast Feed</title>
+  <style>
+    :root { color-scheme:light; --green:#0f5132; --mint:#e8f5ed; --line:#d8e4dc; --ink:#173126; --muted:#60736a; }
+    * { box-sizing:border-box; } body { margin:0; font:16px/1.5 system-ui,-apple-system,sans-serif; color:var(--ink); background:#f7faf8; }
+    main { width:min(960px,calc(100% - 32px)); margin:48px auto; } header { display:flex; gap:16px; align-items:center; margin-bottom:28px; }
+    .mark { display:grid; place-items:center; width:52px; height:52px; border-radius:15px; background:var(--green); color:white; font-weight:800; }
+    h1,h2,p { margin:0; } h1 { font-size:clamp(1.6rem,4vw,2.25rem); } .sub { color:var(--muted); margin-top:4px; }
+    .panel,.card { background:white; border:1px solid var(--line); border-radius:18px; box-shadow:0 8px 24px rgba(15,81,50,.06); }
+    .panel { padding:22px; margin-bottom:20px; } .status { display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:6px 11px; background:var(--mint); color:var(--green); font-weight:750; }
+    .dot { width:9px; height:9px; border-radius:50%; background:#12a55a; } .meta { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px; margin-top:20px; }
+    .label { color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; } .value { font-weight:750; margin-top:3px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:16px 0 20px; } .card { padding:20px; }
+    .price { font-size:2rem; color:var(--green); font-weight:850; margin:10px 0 4px; } .range,.notice { color:var(--muted); } .notice { font-size:.92rem; }
+    a { color:var(--green); font-weight:700; } @media (max-width:560px) { main { margin:24px auto; } header { align-items:flex-start; } }
+  </style>
+</head>
+<body>
+<main>
+  <header><div class="mark" aria-hidden="true">GC+</div><div><h1>Weekly lettuce price forecast</h1><p class="sub">Green CHAIN+ verified forecast feed</p></div></header>
+  <section class="panel" aria-live="polite">
+    <div class="status"><span class="dot"></span><span id="status">Loading verified feed…</span></div>
+    <div class="meta">
+      <div><div class="label">Forecast week</div><div class="value" id="period">—</div></div>
+      <div><div class="label">Data through</div><div class="value" id="through">—</div></div>
+      <div><div class="label">Production WAPE</div><div class="value" id="wape">—</div></div>
+      <div><div class="label">Signature</div><div class="value" id="signature">Checking…</div></div>
+    </div>
+  </section>
+  <section><h2>Forecasts</h2><div class="cards" id="cards"></div></section>
+  <section class="panel notice">NCR retail-price reference only. Values are not guaranteed farm-gate or Iligan City quotations. <a href="forecast/latest.json">Open JSON feed</a></section>
+</main>
+<script>
+  const byId = id => document.getElementById(id);
+  const money = value => new Intl.NumberFormat('en-PH',{style:'currency',currency:'PHP'}).format(value) + '/kg';
+  const bytesFromBase64 = value => Uint8Array.from(atob(value.replace(/\s/g,'')), c => c.charCodeAt(0));
+  const pemBytes = pem => bytesFromBase64(pem.replace(/-----[^-]+-----/g,''));
+  async function load() {
+    try {
+      const [feedResponse,signatureResponse,keyResponse] = await Promise.all([
+        fetch('forecast/latest.json',{cache:'no-store'}), fetch('forecast/latest.sig',{cache:'no-store'}), fetch('forecast/forecast_public.pem',{cache:'no-store'})
+      ]);
+      if (!feedResponse.ok || !signatureResponse.ok || !keyResponse.ok) throw new Error('First deployment has not completed');
+      const raw = await feedResponse.arrayBuffer();
+      const feed = JSON.parse(new TextDecoder().decode(raw));
+      const signature = bytesFromBase64(await signatureResponse.text());
+      const key = await crypto.subtle.importKey('spki',pemBytes(await keyResponse.text()),{name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'},false,['verify']);
+      if (!await crypto.subtle.verify('RSASSA-PKCS1-v1_5',key,signature,raw)) throw new Error('Signature verification failed');
+      byId('status').textContent = feed.production_health.status === 'HEALTHY' ? 'Forecast healthy' : 'Review required';
+      byId('period').textContent = `${feed.forecast_period.start} to ${feed.forecast_period.end}`;
+      byId('through').textContent = feed.data.data_through;
+      byId('wape').textContent = `${feed.production_health.aggregate.wape_percent.toFixed(2)}%`;
+      byId('signature').textContent = 'Verified';
+      for (const prediction of Object.values(feed.predictions)) {
+        const article=document.createElement('article'); article.className='card';
+        const title=document.createElement('h2'); title.textContent=prediction.label;
+        const price=document.createElement('div'); price.className='price'; price.textContent=money(prediction.point_php_per_kg);
+        const range=document.createElement('div'); range.className='range'; range.textContent=`${money(prediction.lower_php_per_kg)} – ${money(prediction.upper_php_per_kg)}`;
+        article.append(title,price,range); byId('cards').append(article);
+      }
+    } catch (error) {
+      byId('status').textContent=error.message; byId('signature').textContent='Unavailable';
+    }
+  }
+  load();
+</script>
+</body>
+</html>

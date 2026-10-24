@@ -1,0 +1,82 @@
+{
+  "status": "HEALTHY",
+  "window_weeks": 8,
+  "period_start": "2026-08-24",
+  "period_end": "2026-10-12",
+  "aggregate": {
+    "rows": 24,
+    "mae_php_per_kg": 41.8517,
+    "wape_percent": 9.1608,
+    "rmse_php_per_kg": 58.4952,
+    "smape_percent": 10.0367,
+    "mase": 0.8725
+  },
+  "by_variety": {
+    "green_leaf": {
+      "rows": 8,
+      "mae_php_per_kg": 40.4331,
+      "wape_percent": 8.998,
+      "rmse_php_per_kg": 58.2202,
+      "smape_percent": 10.2188,
+      "mase": 0.8538
+    },
+    "iceberg": {
+      "rows": 8,
+      "mae_php_per_kg": 36.2541,
+      "wape_percent": 7.6751,
+      "rmse_php_per_kg": 46.7117,
+      "smape_percent": 7.2451,
+      "mase": 0.9499
+    },
+    "romaine": {
+      "rows": 8,
+      "mae_php_per_kg": 48.8678,
+      "wape_percent": 10.8874,
+      "rmse_php_per_kg": 68.5091,
+      "smape_percent": 12.6463,
+      "mase": 0.837
+    }
+  },
+  "previous_week_baseline": {
+    "aggregate": {
+      "rows": 24,
+      "mae_php_per_kg": 75.7571,
+      "wape_percent": 16.5822,
+      "rmse_php_per_kg": 87.0438,
+      "smape_percent": 17.5788,
+      "mase": 1.5793
+    },
+    "by_variety": {
+      "green_leaf": {
+        "rows": 8,
+        "mae_php_per_kg": 76.2363,
+        "wape_percent": 16.9656,
+        "rmse_php_per_kg": 88.3777,
+        "smape_percent": 17.9978,
+        "mase": 1.6098
+      },
+      "iceberg": {
+        "rows": 8,
+        "mae_php_per_kg": 63.5625,
+        "wape_percent": 13.4563,
+        "rmse_php_per_kg": 70.306,
+        "smape_percent": 14.104,
+        "mase": 1.6654
+      },
+      "romaine": {
+        "rows": 8,
+        "mae_php_per_kg": 87.4725,
+        "wape_percent": 19.4882,
+        "rmse_php_per_kg": 99.8814,
+        "smape_percent": 20.6344,
+        "mase": 1.4983
+      }
+    }
+  },
+  "gates": {
+    "aggregate_wape_within_limit": true,
+    "aggregate_mase_below_one": true,
+    "every_variety_wape_within_limit": true,
+    "beats_previous_week_baseline": true
+  }
+}

@@ -1,75 +1,75 @@
 {
   "status": "HEALTHY",
   "window_weeks": 8,
-  "period_start": "2026-08-24",
-  "period_end": "2026-10-12",
+  "period_start": "2026-08-31",
+  "period_end": "2026-10-19",
   "aggregate": {
     "rows": 24,
-    "mae_php_per_kg": 41.8517,
-    "wape_percent": 9.1608,
-    "rmse_php_per_kg": 58.4952,
-    "smape_percent": 10.0367,
-    "mase": 0.8725
+    "mae_php_per_kg": 40.2105,
+    "wape_percent": 9.4417,
+    "rmse_php_per_kg": 57.9599,
+    "smape_percent": 9.953,
+    "mase": 0.7211
   },
   "by_variety": {
     "green_leaf": {
       "rows": 8,
-      "mae_php_per_kg": 40.4331,
-      "wape_percent": 8.998,
-      "rmse_php_per_kg": 58.2202,
-      "smape_percent": 10.2188,
-      "mase": 0.8538
+      "mae_php_per_kg": 37.6403,
+      "wape_percent": 9.1328,
+      "rmse_php_per_kg": 57.5221,
+      "smape_percent": 9.799,
+      "mase": 0.6648
     },
     "iceberg": {
       "rows": 8,
-      "mae_php_per_kg": 36.2541,
-      "wape_percent": 7.6751,
-      "rmse_php_per_kg": 46.7117,
-      "smape_percent": 7.2451,
-      "mase": 0.9499
+      "mae_php_per_kg": 33.9369,
+      "wape_percent": 7.5104,
+      "rmse_php_per_kg": 45.5197,
+      "smape_percent": 6.9091,
+      "mase": 0.7519
     },
     "romaine": {
       "rows": 8,
-      "mae_php_per_kg": 48.8678,
-      "wape_percent": 10.8874,
-      "rmse_php_per_kg": 68.5091,
-      "smape_percent": 12.6463,
-      "mase": 0.837
+      "mae_php_per_kg": 49.0544,
+      "wape_percent": 11.8592,
+      "rmse_php_per_kg": 68.5363,
+      "smape_percent": 13.1509,
+      "mase": 0.7484
     }
   },
   "previous_week_baseline": {
     "aggregate": {
       "rows": 24,
-      "mae_php_per_kg": 75.7571,
-      "wape_percent": 16.5822,
-      "rmse_php_per_kg": 87.0438,
-      "smape_percent": 17.5788,
-      "mase": 1.5793
+      "mae_php_per_kg": 68.4525,
+      "wape_percent": 16.0731,
+      "rmse_php_per_kg": 82.0118,
+      "smape_percent": 16.4871,
+      "mase": 1.2275
     },
     "by_variety": {
       "green_leaf": {
         "rows": 8,
-        "mae_php_per_kg": 76.2363,
-        "wape_percent": 16.9656,
-        "rmse_php_per_kg": 88.3777,
-        "smape_percent": 17.9978,
-        "mase": 1.6098
+        "mae_php_per_kg": 67.5288,
+        "wape_percent": 16.3847,
+        "rmse_php_per_kg": 82.9067,
+        "smape_percent": 16.6865,
+        "mase": 1.1928
       },
       "iceberg": {
         "rows": 8,
-        "mae_php_per_kg": 63.5625,
-        "wape_percent": 13.4563,
-        "rmse_php_per_kg": 70.306,
-        "smape_percent": 14.104,
-        "mase": 1.6654
+        "mae_php_per_kg": 58.3438,
+        "wape_percent": 12.9118,
+        "rmse_php_per_kg": 64.7191,
+        "smape_percent": 13.2728,
+        "mase": 1.2926
       },
       "romaine": {
         "rows": 8,
-        "mae_php_per_kg": 87.4725,
-        "wape_percent": 19.4882,
-        "rmse_php_per_kg": 99.8814,
-        "smape_percent": 20.6344,
-        "mase": 1.4983
+        "mae_php_per_kg": 79.485,
+        "wape_percent": 19.216,
+        "rmse_php_per_kg": 95.4763,
+        "smape_percent": 19.5021,
+        "mase": 1.2127
       }
     }
   },

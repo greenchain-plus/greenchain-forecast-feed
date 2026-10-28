@@ -1,9 +1,9 @@
 {
-  "status": "NO_NEW_REPORT",
-  "checked_at": "2026-10-24T05:16:34Z",
-  "reports_added": 0,
-  "data_through": "2026-10-12",
-  "verified_weeks": 42,
-  "publication_changed": false,
+  "status": "PUBLISHED",
+  "checked_at": "2026-10-28T06:07:39Z",
+  "reports_added": 1,
+  "data_through": "2026-10-19",
+  "verified_weeks": 43,
+  "publication_changed": true,
   "production_health": "HEALTHY"
 }

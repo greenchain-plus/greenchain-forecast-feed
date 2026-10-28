@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "feed_id": "greenchain-weekly-lettuce-price-forecast",
-  "sequence": 42,
-  "generated_at": "2026-10-24T05:06:58Z",
+  "sequence": 43,
+  "generated_at": "2026-10-28T06:07:39Z",
   "model": {
     "id": "greenchain-da-weekly-damped-trend-v1",
     "release_status": "APPROVED",
@@ -27,117 +27,117 @@
     "unit": "PHP_PER_KG"
   },
   "data": {
-    "verified_weeks": 42,
+    "verified_weeks": 43,
     "period_start": "2025-12-29",
-    "data_through": "2026-10-12",
-    "dataset_sha256": "03a5622a54f85c120033d3bf0d8848de93cd9a17fc2e74a7c7fa67eceaab310e",
-    "latest_source_url": "https://www.da.gov.ph/wp-content/uploads/2026/10/Weekly-Average-Prices-October-12-18-2026.pdf",
-    "latest_source_sha256": null,
+    "data_through": "2026-10-19",
+    "dataset_sha256": "58512bb0dc09cf41203b8f2ead86d55ff7838821a338a508afaad35f0ae3d40c",
+    "latest_source_url": "https://www.da.gov.ph/wp-content/uploads/2026/10/Weekly-Average-Prices-October-19-25-2026.pdf",
+    "latest_source_sha256": "fb3468941e390496207c4e7120d07f5d0eb4c58977fa1d3d373b59a3e54459fd",
     "source_listing": "https://www.da.gov.ph/price-monitoring/"
   },
   "forecast_period": {
-    "start": "2026-10-19",
-    "end": "2026-10-25",
-    "stale_after": "2026-11-01"
+    "start": "2026-10-26",
+    "end": "2026-11-01",
+    "stale_after": "2026-11-08"
   },
   "predictions": {
     "green_leaf": {
       "label": "Green Leaf",
-      "point_php_per_kg": 197.94,
-      "lower_php_per_kg": 122.14,
-      "upper_php_per_kg": 273.73,
-      "latest_observed_php_per_kg": 220.21,
-      "previous_observed_php_per_kg": 249.91
+      "point_php_per_kg": 186.99,
+      "lower_php_per_kg": 111.2,
+      "upper_php_per_kg": 262.78,
+      "latest_observed_php_per_kg": 201.23,
+      "previous_observed_php_per_kg": 220.21
     },
     "iceberg": {
       "label": "Iceberg",
-      "point_php_per_kg": 287.81,
-      "lower_php_per_kg": 269.89,
-      "upper_php_per_kg": 305.74,
-      "latest_observed_php_per_kg": 324.76,
-      "previous_observed_php_per_kg": 374.02
+      "point_php_per_kg": 234.81,
+      "lower_php_per_kg": 216.89,
+      "upper_php_per_kg": 252.73,
+      "latest_observed_php_per_kg": 273.36,
+      "previous_observed_php_per_kg": 324.76
     },
     "romaine": {
       "label": "Romaine",
-      "point_php_per_kg": 173.5,
-      "lower_php_per_kg": 102.31,
-      "upper_php_per_kg": 244.69,
-      "latest_observed_php_per_kg": 206.16,
-      "previous_observed_php_per_kg": 249.7
+      "point_php_per_kg": 167.8,
+      "lower_php_per_kg": 96.61,
+      "upper_php_per_kg": 238.99,
+      "latest_observed_php_per_kg": 184.24,
+      "previous_observed_php_per_kg": 206.16
     }
   },
   "production_health": {
     "status": "HEALTHY",
     "window_weeks": 8,
-    "period_start": "2026-08-24",
-    "period_end": "2026-10-12",
+    "period_start": "2026-08-31",
+    "period_end": "2026-10-19",
     "aggregate": {
       "rows": 24,
-      "mae_php_per_kg": 41.8517,
-      "wape_percent": 9.1608,
-      "rmse_php_per_kg": 58.4952,
-      "smape_percent": 10.0367,
-      "mase": 0.8725
+      "mae_php_per_kg": 40.2105,
+      "wape_percent": 9.4417,
+      "rmse_php_per_kg": 57.9599,
+      "smape_percent": 9.953,
+      "mase": 0.7211
     },
     "by_variety": {
       "green_leaf": {
         "rows": 8,
-        "mae_php_per_kg": 40.4331,
-        "wape_percent": 8.998,
-        "rmse_php_per_kg": 58.2202,
-        "smape_percent": 10.2188,
-        "mase": 0.8538
+        "mae_php_per_kg": 37.6403,
+        "wape_percent": 9.1328,
+        "rmse_php_per_kg": 57.5221,
+        "smape_percent": 9.799,
+        "mase": 0.6648
       },
       "iceberg": {
         "rows": 8,
-        "mae_php_per_kg": 36.2541,
-        "wape_percent": 7.6751,
-        "rmse_php_per_kg": 46.7117,
-        "smape_percent": 7.2451,
-        "mase": 0.9499
+        "mae_php_per_kg": 33.9369,
+        "wape_percent": 7.5104,
+        "rmse_php_per_kg": 45.5197,
+        "smape_percent": 6.9091,
+        "mase": 0.7519
       },
       "romaine": {
         "rows": 8,
-        "mae_php_per_kg": 48.8678,
-        "wape_percent": 10.8874,
-        "rmse_php_per_kg": 68.5091,
-        "smape_percent": 12.6463,
-        "mase": 0.837
+        "mae_php_per_kg": 49.0544,
+        "wape_percent": 11.8592,
+        "rmse_php_per_kg": 68.5363,
+        "smape_percent": 13.1509,
+        "mase": 0.7484
       }
     },
     "previous_week_baseline": {
       "aggregate": {
         "rows": 24,
-        "mae_php_per_kg": 75.7571,
-        "wape_percent": 16.5822,
-        "rmse_php_per_kg": 87.0438,
-        "smape_percent": 17.5788,
-        "mase": 1.5793
+        "mae_php_per_kg": 68.4525,
+        "wape_percent": 16.0731,
+        "rmse_php_per_kg": 82.0118,
+        "smape_percent": 16.4871,
+        "mase": 1.2275
       },
       "by_variety": {
         "green_leaf": {
           "rows": 8,
-          "mae_php_per_kg": 76.2363,
-          "wape_percent": 16.9656,
-          "rmse_php_per_kg": 88.3777,
-          "smape_percent": 17.9978,
-          "mase": 1.6098
+          "mae_php_per_kg": 67.5288,
+          "wape_percent": 16.3847,
+          "rmse_php_per_kg": 82.9067,
+          "smape_percent": 16.6865,
+          "mase": 1.1928
         },
         "iceberg": {
           "rows": 8,
-          "mae_php_per_kg": 63.5625,
-          "wape_percent": 13.4563,
-          "rmse_php_per_kg": 70.306,
-          "smape_percent": 14.104,
-          "mase": 1.6654
+          "mae_php_per_kg": 58.3438,
+          "wape_percent": 12.9118,
+          "rmse_php_per_kg": 64.7191,
+          "smape_percent": 13.2728,
+          "mase": 1.2926
         },
         "romaine": {
           "rows": 8,
-          "mae_php_per_kg": 87.4725,
-          "wape_percent": 19.4882,
-          "rmse_php_per_kg": 99.8814,
-          "smape_percent": 20.6344,
-          "mase": 1.4983
+          "mae_php_per_kg": 79.485,
+          "wape_percent": 19.216,
+          "rmse_php_per_kg": 95.4763,
+          "smape_percent": 19.5021,
+          "mase": 1.2127
         }
       }
     },
